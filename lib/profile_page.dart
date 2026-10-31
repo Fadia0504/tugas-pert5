@@ -28,6 +28,24 @@ class ProfilePage extends StatelessWidget {
               icon: const Icon(Icons.edit),
               label: const Text('Edit Profil'),
             ),
+            const SizedBox(height: 24),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              decoration: BoxDecoration(
+                color: Colors.blue[50],
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(children: [Text('15'), Text('Proyek')]),
+                  SizedBox(width: 24),
+                  Column(children: [Text('1.2K'), Text('Followers')]),
+                  SizedBox(width: 24),
+                  Column(children: [Text('42'), Text('Following')]),
+                ],
+              ),
+            ),
           ],
         ),
       ),
