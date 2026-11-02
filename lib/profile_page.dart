@@ -17,6 +17,41 @@ class _ProfilePageState extends State<ProfilePage> {
     'Bisa Sikap Lilin',
   ];
 
+  void _showEditDialog() {
+    String newName = userName;
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text('Edit Profil'),
+          content: TextFormField(
+            initialValue: userName,
+            decoration: const InputDecoration(labelText: 'Nama'),
+            onChanged: (value) {
+              newName = value;
+            },
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Batal'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  userName = newName;
+                });
+                Navigator.pop(context);
+              },
+              child: const Text('Simpan'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ProfileInfo(name: userName, role: role),
             const SizedBox(height: 24),
             ElevatedButton.icon(
-              onPressed: () {},
+              onPressed: _showEditDialog,
               icon: const Icon(Icons.edit),
               label: const Text('Edit Profil'),
             ),
